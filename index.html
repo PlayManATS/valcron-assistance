@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valcron Assistance — Пътна помощ Варна, 24/7</title>
+<meta name="description" content="Valcron Assistance — 24/7 пътна помощ, репатрак, смяна на гума, старт на акумулатор и още във Варна и областта. Обадете се сега: 0884 987 137">
+
+<!-- ====================================================================
+     БЪРЗИ РЕДАКЦИИ — най-често сменяните неща са тук горе, като таблица.
+     Просто намери текста със същия етикет по-долу в HTML-а (Ctrl+F) и го смени.
+     ==================================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* =====================  ДИЗАЙН ТОКЕНИ  =====================
+     Смени тук цветовете и те ще се обновят навсякъде в сайта. */
+  :root{
+    --asphalt: #1a1a1d;
+    --asphalt-light: #2b2b30;
+    --hazard-yellow: #ffc72c;
+    --safety-orange: #ff5a1f;
+    --cream: #f7f5f0;
+    --white: #ffffff;
+    --text-dark: #1a1a1d;
+    --text-mute: #6b6b70;
+    --radius: 14px;
+    --max-w: 1180px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--text-dark);
+    background:var(--cream);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Archivo Black', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  ul{ list-style:none; }
+
+  .wrap{ max-width:var(--max-w); margin:0 auto; padding:0 24px; }
+  .section{ padding:88px 0; }
+  @media (max-width:640px){ .section{ padding:56px 0; } }
+
+  /* ---------- бутони ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-weight:800; font-size:15px; letter-spacing:0.02em;
+    padding:16px 28px; border-radius:100px;
+    text-transform:uppercase; cursor:pointer; border:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{
+    background:var(--hazard-yellow); color:var(--asphalt);
+    box-shadow:0 6px 0 #b98a00;
+  }
+  .btn-primary:hover{ box-shadow:0 8px 0 #b98a00; }
+  .btn-primary:active{ transform:translateY(2px); box-shadow:0 3px 0 #b98a00; }
+  .btn-ghost{
+    background:transparent; color:var(--white); border:2px solid rgba(255,255,255,.35);
+  }
+  .btn-ghost:hover{ border-color:var(--white); }
+  .btn-dark{
+    background:var(--asphalt); color:var(--white);
+    box-shadow:0 6px 0 #000;
+  }
+  .btn-dark:active{ transform:translateY(2px); box-shadow:0 3px 0 #000; }
+
+  /* ---------- хазарден кант — сигнатурен елемент ---------- */
+  .hazard-strip{
+    height:14px;
+    background:repeating-linear-gradient(
+      -45deg,
+      var(--hazard-yellow), var(--hazard-yellow) 22px,
+      var(--asphalt) 22px, var(--asphalt) 44px
+    );
+  }
+
+  /* ---------- пътна лента разделител ---------- */
+  .lane-divider{
+    height:56px;
+    background:var(--asphalt);
+    position:relative;
+    overflow:hidden;
+  
+  }
+  .lane-divider::before{
+    content:"";
+    position:absolute; top:50%; left:0; right:0;
+    height:6px; transform:translateY(-50%);
+    background-image: repeating-linear-gradient(90deg, var(--hazard-yellow) 0 46px, transparent 46px 76px);
+    animation: laneMove 3.2s linear infinite;
+  }
+  @keyframes laneMove{ from{ background-position-x:0; } to{ background-position-x:122px; } }
+  @media (prefers-reduced-motion: reduce){ .lane-divider::before{ animation:none; } }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--asphalt);
+    border-bottom:4px solid var(--hazard-yellow);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; max-width:var(--max-w); margin:0 auto;
+    gap:20px; flex-wrap:wrap;
+  }
+  .primary-nav{ display:flex; align-items:center; gap:26px; }
+  .primary-nav a{
+    color:rgba(255,255,255,.72); font-size:14px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.04em;
+    transition:color .15s ease;
+  }
+  .primary-nav a:hover, .primary-nav a.active{ color:var(--hazard-yellow); }
+  @media (max-width:900px){ .primary-nav{ order:3; width:100%; justify-content:center; gap:20px; } }
+  .logo{
+    display:flex; align-items:center; gap:12px;
+    color:var(--white); font-family:'Archivo Black'; font-size:18px; text-transform:uppercase;
+  }
+  .logo-mark{
+    width:40px; height:40px; border-radius:10px;
+    background:var(--hazard-yellow);
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px;
+    flex-shrink:0;
+  }
+  .nav-call{
+    display:flex; align-items:center; gap:10px;
+    color:var(--hazard-yellow); font-weight:800; font-size:16px;
+    white-space:nowrap;
+  }
+  .nav-call small{ display:block; color:rgba(255,255,255,.6); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+
+  /* ---------- ПОКРИВЕН АВАРИЕН LED БАР (LIGHTBAR) ---------- */
+  .lightbar-stage{
+    position:relative;
+    width:100%;
+    max-width:760px;
+    margin:0 auto 28px;
+    padding:10px 0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    z-index:3;
+  }
+  .lightbar-housing{
+    position:relative;
+    width:100%;
+    height:32px;
+    background:#161618;
+    border-radius:8px;
+    border:2px solid #333338;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:4px 8px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.8), inset 0 2px 4px rgba(255,255,255,0.15);
+  }
+  /* Странични оранжеви ъглови капаци */
+  .lb-end{
+    width:22px;
+    height:100%;
+    border-radius:4px;
+    background:#ff5a1f;
+    opacity:0.3;
+    transition:opacity 0.1s ease;
+  }
+  .lb-end.left{ animation:strobeLeft 1.2s infinite ease-in-out; }
+  .lb-end.right{ animation:strobeRight 1.2s infinite ease-in-out; }
+
+  /* LED диодна матрица */
+  .lb-modules{
+    display:flex;
+    flex:1;
+    gap:4px;
+    padding:0 8px;
+    justify-content:space-between;
+  }
+  .lb-led{
+    flex:1;
+    height:14px;
+    border-radius:2px;
+    background:#222;
+    transition:all 0.08s ease;
+  }
+  .lb-led.left{ animation:strobeLeft 1.2s infinite ease-in-out; }
+  .lb-led.right{ animation:strobeRight 1.2s infinite ease-in-out; }
+
+  /* Монтажни крачета под бара */
+  .lb-brackets{
+    width:82%;
+    display:flex;
+    justify-content:space-between;
+    height:10px;
+  }
+  .lb-bracket{
+    width:24px;
+    height:100%;
+    background:#2b2b30;
+    clip-path:polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+  }
+
+  /* Динамично оранжево сияние около гредата */
+  .lightbar-glow{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:105%;
+    height:90px;
+    border-radius:40px;
+    pointer-events:none;
+    z-index:-1;
+    filter:blur(24px);
+    opacity:0.65;
+    animation:barHalo 1.2s infinite ease-in-out;
+  }
+
+  @keyframes strobeLeft{
+    0%, 42%, 100%{
+      background:#3a2000;
+      opacity:0.25;
+      box-shadow:none;
+    }
+    5%, 15%, 25%{
+      background:#ffc72c;
+      opacity:1;
+      box-shadow:0 0 16px #ff5a1f, 0 0 28px #ffc72c;
+    }
+    10%, 20%{
+      background:#ff5a1f;
+      opacity:0.5;
+    }
+  }
+
+  @keyframes strobeRight{
+    0%, 50%, 100%{
+      background:#3a2000;
+      opacity:0.25;
+      box-shadow:none;
+    }
+    55%, 65%, 75%{
+      background:#ffc72c;
+      opacity:1;
+      box-shadow:0 0 16px #ff5a1f, 0 0 28px #ffc72c;
+    }
+    60%, 70%{
+      background:#ff5a1f;
+      opacity:0.5;
+    }
+  }
+
+  @keyframes barHalo{
+    0%, 100%{
+      background:radial-gradient(ellipse at center, rgba(255, 90, 31, 0.25), transparent 70%);
+      opacity:0.4;
+    }
+    25%, 75%{
+      background:radial-gradient(ellipse at center, rgba(255, 199, 44, 0.8), rgba(255, 90, 31, 0.45) 50%, transparent 75%);
+      opacity:1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .lb-end, .lb-led, .lightbar-glow{ animation:none; opacity:0.5; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--asphalt);
+    color:var(--white);
+    position:relative;
+    padding:48px 0 36px;
+    text-align:center;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(600px 300px at 85% 20%, rgba(255,199,44,.14), transparent 70%),
+      radial-gradient(500px 260px at 10% 90%, rgba(255,90,31,.12), transparent 70%);
+    pointer-events:none;
+  }
+  .hero-inner{ position:relative; z-index:2; max-width:820px; margin:0 auto; }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,199,44,.12); color:var(--hazard-yellow);
+    padding:8px 16px; border-radius:100px; font-size:13px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.08em; margin-bottom:20px;
+    border:1px solid rgba(255,199,44,.3);
+  }
+  .pulse-dot{
+    width:8px; height:8px; border-radius:50%; background:#4ade80;
+    box-shadow:0 0 0 rgba(74,222,128,.6); animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(74,222,128,.6); }
+    70%{ box-shadow:0 0 0 8px rgba(74,222,128,0); }
+    100%{ box-shadow:0 0 0 0 rgba(74,222,128,0); }
+  }
+  .hero h1{
+    font-size:clamp(36px, 5.6vw, 58px);
+    margin-bottom:18px;
+  }
+  .hero h1 span{ color:var(--hazard-yellow); }
+  .hero p.lede{
+    font-size:18px; color:rgba(255,255,255,.72); max-width:580px; margin:0 auto 32px;
+  }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+  .hero-meta{
+    display:flex; gap:36px; margin-top:40px; flex-wrap:wrap; justify-content:center;
+  }
+  .hero-meta div strong{ display:block; font-family:'Archivo Black'; font-size:26px; color:var(--hazard-yellow); }
+  .hero-meta div span{ font-size:13px; color:rgba(255,255,255,.6); text-transform:uppercase; letter-spacing:.04em; }
+
+  /* ---------- услуги ---------- */
+  .section-head{ max-width:560px; margin-bottom:48px; }
+  .section-head .kicker{
+    color:var(--safety-orange); font-weight:800; font-size:13px;
+    text-transform:uppercase; letter-spacing:.1em; display:block; margin-bottom:10px;
+  }
+  .section-head h2{ font-size:clamp(28px,4vw,40px); }
+
+  .services-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:20px;
+  }
+  .service-card{
+    background:var(--white); border-radius:var(--radius);
+    padding:28px; border:2px solid transparent;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .service-card:hover{ border-color:var(--hazard-yellow); transform:translateY(-4px); }
+  .service-icon{
+    width:52px; height:52px; border-radius:12px;
+    background:var(--asphalt); color:var(--hazard-yellow);
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; margin-bottom:18px;
+  }
+  .service-card h3{
+    font-family:'Inter'; text-transform:none; font-weight:800; font-size:17px;
+    margin-bottom:8px; letter-spacing:0;
+  }
+  .service-card p{ font-size:14px; color:var(--text-mute); }
+
+  /* ---------- как работим ---------- */
+  .steps{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:32px; counter-reset:step;
+  }
+  .step{ position:relative; padding-left:8px; }
+  .step-num{
+    font-family:'Archivo Black'; font-size:44px; color:var(--hazard-yellow);
+    -webkit-text-stroke:2px var(--asphalt);
+    margin-bottom:10px;
+  }
+  .step h3{ font-family:'Inter'; text-transform:none; font-weight:800; font-size:17px; margin-bottom:6px; letter-spacing:0; }
+  .step p{ font-size:14px; color:var(--text-mute); }
+
+  /* ---------- зона на покритие ---------- */
+  .coverage{
+    background:var(--asphalt-light); color:var(--white);
+    border-radius:24px; padding:48px; display:flex; gap:48px; flex-wrap:wrap; align-items:center;
+  }
+  .coverage-text{ flex:1; min-width:260px; }
+  .coverage-text h2{ font-size:clamp(24px,3.4vw,32px); margin-bottom:14px; }
+  .coverage-text p{ color:rgba(255,255,255,.7); margin-bottom:20px; }
+  .coverage-tags{ display:flex; gap:10px; flex-wrap:wrap; }
+  .coverage-tags span{
+    background:rgba(255,199,44,.12); color:var(--hazard-yellow);
+    border:1px solid rgba(255,199,44,.3); padding:8px 14px; border-radius:100px;
+    font-size:13px; font-weight:700;
+  }
+  .coverage-badge{
+    flex-shrink:0; width:180px; height:180px; border-radius:50%;
+    background:var(--hazard-yellow); color:var(--asphalt);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-family:'Archivo Black'; text-align:center;
+  }
+  .coverage-badge strong{ font-size:34px; }
+  .coverage-badge span{ font-size:11px; letter-spacing:.06em; }
+
+  /* ---------- контакти ---------- */
+  .contact{ background:var(--asphalt); color:var(--white); }
+  .contact-grid{
+    display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;
+  }
+  @media (max-width:820px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact h2{ font-size:clamp(28px,4vw,40px); margin-bottom:16px; }
+  .contact p.lede{ color:rgba(255,255,255,.7); max-width:460px; margin-bottom:32px; }
+  .contact-methods{ display:flex; flex-direction:column; gap:14px; }
+  .contact-method{
+    display:flex; align-items:center; gap:16px;
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+    padding:18px 20px; border-radius:14px;
+  }
+  .contact-method .icon{
+    width:44px; height:44px; border-radius:10px; background:var(--hazard-yellow);
+    color:var(--asphalt); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;
+  }
+  .contact-method strong{ display:block; font-size:16px; }
+  .contact-method span{ font-size:13px; color:rgba(255,255,255,.55); }
+
+  .contact-card{
+    background:var(--white); color:var(--text-dark); border-radius:20px; padding:36px;
+  }
+  .contact-card h3{ font-size:20px; margin-bottom:6px; }
+  .contact-card p{ color:var(--text-mute); font-size:14px; margin-bottom:24px; }
+  .big-number{
+    font-family:'Archivo Black'; font-size:clamp(30px,4vw,38px);
+    color:var(--asphalt); margin-bottom:20px; display:block; letter-spacing:-.01em;
+  }
+
+  /* ---------- footer ---------- */
+  footer{ background:var(--asphalt); color:rgba(255,255,255,.5); padding:32px 0; font-size:13px; }
+  .footer-inner{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+
+  /* ---------- статистика ---------- */
+  .stats{
+    background:var(--asphalt); color:var(--white);
+  }
+  .stats-grid{
+    display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;
+  }
+  @media (max-width:820px){ .stats-grid{ grid-template-columns:1fr; } }
+  .stats-photo{
+    border-radius:20px; overflow:hidden; aspect-ratio:4/3;
+    background:var(--asphalt-light);
+  }
+  .stats-photo img{ width:100%; height:100%; object-fit:cover; }
+  .stats h2{ font-size:clamp(26px,3.6vw,36px); margin-bottom:36px; max-width:420px; }
+  .stats-list{ display:flex; flex-direction:column; gap:28px; }
+  .stat-num{
+    font-family:'Archivo Black'; font-size:clamp(34px,5vw,52px);
+    color:var(--hazard-yellow); line-height:1;
+  }
+  .stat-label{ font-size:14px; color:rgba(255,255,255,.6); margin-top:6px; }
+
+  /* ---------- бърза заявка (wizard) ---------- */
+  .quick-request{ 
+    background:var(--asphalt); 
+    color:var(--white); 
+    position:relative; 
+    padding:48px 0 88px; 
+  }
+  .qr-head{ text-align:center; max-width:620px; margin:0 auto 36px; }
+  .qr-head .kicker{ color:var(--hazard-yellow); }
+  .qr-head h2{ font-size:clamp(26px,3.8vw,38px); margin-bottom:10px; }
+  .qr-head p{ color:rgba(255,255,255,.65); font-size:15px; }
+
+  .qr-card{
+    max-width:680px; margin:0 auto;
+    background:var(--asphalt-light); border-radius:20px; padding:32px;
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .qr-progress{ display:flex; gap:6px; margin-bottom:28px; }
+  .qr-progress .dot{
+    flex:1; height:5px; border-radius:100px; background:rgba(255,255,255,.12);
+    transition:background .2s ease;
+  }
+  .qr-progress .dot.done{ background:var(--hazard-yellow); }
+
+  .qr-step{ display:none; }
+  .qr-step.active{ display:block; animation:qrFade .25s ease; }
+  @keyframes qrFade{ from{ opacity:0; transform:translateY(6px);} to{ opacity:1; transform:translateY(0);} }
+
+  .qr-step-label{
+    color:var(--hazard-yellow); font-weight:800; font-size:12px;
+    text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px;
+  }
+  .qr-step h3{
+    font-family:'Inter'; text-transform:none; letter-spacing:0;
+    font-size:20px; font-weight:800; margin-bottom:6px;
+  }
+  .qr-step-hint{
+    font-size:13px; color:rgba(255,255,255,.5); margin-bottom:20px;
+  }
+
+  .qr-options{ display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-bottom:24px; }
+  @media (max-width:520px){ .qr-options{ grid-template-columns:1fr; } }
+  .qr-opt{
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,255,255,.12);
+    color:var(--white); border-radius:12px; padding:15px 16px; text-align:left;
+    font-family:'Inter'; font-size:14px; font-weight:600; cursor:pointer;
+    display:flex; align-items:center; gap:12px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .qr-opt .qr-opt-icon{ font-size:20px; flex-shrink:0; }
+  .qr-opt:hover{ border-color:rgba(255,199,44,.5); }
+  .qr-opt.selected{ border-color:var(--hazard-yellow); background:rgba(255,199,44,.12); }
+
+  .qr-nav{ display:flex; justify-content:space-between; gap:12px; }
+  .qr-btn-back{
+    background:transparent; color:rgba(255,255,255,.6); border:none;
+    font-weight:700; font-size:14px; cursor:pointer; padding:12px 6px;
+  }
+  .qr-btn-back:hover{ color:var(--white); }
+  .qr-btn-next{
+    background:var(--hazard-yellow); color:var(--asphalt); border:none;
+    font-weight:800; font-size:14px; text-transform:uppercase; letter-spacing:.02em;
+    padding:14px 26px; border-radius:100px; cursor:pointer;
+    opacity:.4; pointer-events:none; transition:opacity .15s ease;
+  }
+  .qr-btn-next.enabled{ opacity:1; pointer-events:auto; }
+
+  .qr-location-box{
+    text-align:center; padding:12px 0 4px;
+  }
+  .qr-location-status{
+    font-size:13px; color:rgba(255,255,255,.55); margin-top:12px; min-height:18px;
+  }
+  .qr-location-status.ok{ color:#4ade80; font-weight:700; }
+  .qr-location-status.err{ color:var(--safety-orange); }
+
+  .qr-preview{
+    background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.1);
+    border-radius:12px; padding:16px; font-size:13px; color:rgba(255,255,255,.8);
+    white-space:pre-wrap; margin:20px 0; line-height:1.6; text-align:left;
+  }
+  .qr-send-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-top:6px; }
+  @media (max-width:560px){ .qr-send-grid{ grid-template-columns:repeat(2, 1fr); } }
+  .qr-send-btn{
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    padding:14px 8px; border-radius:12px; border:2px solid rgba(255,255,255,.12);
+    color:var(--white); font-size:12px; font-weight:700; text-transform:uppercase;
+    background:rgba(255,255,255,.04); cursor:pointer; transition:border-color .15s ease;
+    font-family:'Inter', sans-serif;
+  }
+  .qr-send-btn:hover{ border-color:var(--hazard-yellow); }
+  .qr-send-btn .ic{ font-size:22px; }
+  .qr-copy-note{ font-size:12px; color:rgba(255,255,255,.45); margin-top:14px; text-align:center; }
+  .qr-restart{
+    display:block; margin:18px auto 0; background:none; border:none;
+    color:rgba(255,255,255,.5); font-size:13px; text-decoration:underline; cursor:pointer;
+  }
+
+  /* ---------- социални мрежи ---------- */
+  .social-links{ display:flex; gap:10px; }
+  .social-link{
+    width:38px; height:38px; border-radius:10px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15);
+    display:flex; align-items:center; justify-content:center;
+    font-size:17px; transition:background .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  .social-link:hover{ background:var(--hazard-yellow); border-color:var(--hazard-yellow); color:var(--asphalt); transform:translateY(-2px); }
+  .footer-social{ display:flex; gap:10px; }
+  .footer-social .social-link{ width:34px; height:34px; font-size:15px; }
+
+  /* ---------- форма за контакт ---------- */
+  .form-field{ margin-bottom:14px; }
+  .form-field label{
+    display:block; font-size:12px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.05em; color:var(--text-mute); margin-bottom:6px;
+  }
+  .form-field input, .form-field textarea{
+    width:100%; padding:13px 14px; border-radius:10px;
+    border:1.5px solid #e4e0d8; background:var(--cream);
+    font-family:'Inter'; font-size:14px; color:var(--text-dark);
+    transition:border-color .15s ease;
+  }
+  .form-field input:focus, .form-field textarea:focus{
+    outline:none; border-color:var(--hazard-yellow);
+  }
+  .form-field textarea{ resize:vertical; min-height:90px; }
+  .form-note{ font-size:12px; color:var(--text-mute); margin-top:14px; }
+
+  /* ---------- плаващ бутон за обаждане ---------- */
+  .float-call{
+    position:fixed; right:20px; bottom:20px; z-index:60;
+    width:60px; height:60px; border-radius:50%;
+    background:var(--hazard-yellow); color:var(--asphalt);
+    display:flex; align-items:center; justify-content:center;
+    font-size:26px; box-shadow:0 8px 24px rgba(0,0,0,.35);
+    animation:floatPulse 2.4s infinite;
+  }
+  @keyframes floatPulse{
+    0%,100%{ box-shadow:0 8px 24px rgba(0,0,0,.35); }
+    50%{ box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 0 10px rgba(255,199,44,.18); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header>
+  <div class="nav">
+    <div class="logo">
+      <img src="logo.png" alt="Valcron Assistance лого" style="height:34px; width:auto;">
+      Valcron Assistance
+    </div>
+    <nav class="primary-nav">
+      <a href="index.html" class="active">Начало</a>
+      <a href="index.html#uslugi">Услуги</a>
+      <a href="gallery.html">Галерия</a>
+      <a href="about.html">За нас</a>
+      <a href="index.html#kontakti">Контакти</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:18px;">
+      <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=61593533576656" target="_blank" rel="noopener" class="social-link" aria-label="Facebook" style="color:var(--white);">f</a>
+        <a href="https://www.instagram.com/valcronassistance/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram" style="color:var(--white);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+      <a href="tel:+359884987137" class="nav-call">
+        <div class="logo-mark" style="width:34px;height:34px;font-size:15px;">📞</div>
+        <div>
+          <small>24/7 обаждане</small>
+          0884 987 137
+        </div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="hazard-strip"></div>
+
+<!-- ==================== ОБЩА ТЪМНА ЗОНА (HERO + РАЗДЕЛИТЕЛ + ЗАЯВКА) ==================== -->
+<div style="background:var(--asphalt);">
+  
+  <!-- HERO С ПОКРИВЕН АВАРИЕН СВЕТЛИНЕН БАР -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+
+      <!-- АВАРИЕН ПОКРИВЕН LED БАР -->
+      <div class="lightbar-stage" aria-hidden="true">
+        <div class="lightbar-glow"></div>
+        <div class="lightbar-housing">
+          <div class="lb-end left"></div>
+          <div class="lb-modules">
+            <div class="lb-led left"></div>
+            <div class="lb-led left"></div>
+            <div class="lb-led left"></div>
+            <div class="lb-led left"></div>
+            <div class="lb-led left"></div>
+            <div class="lb-led left"></div>
+            <div class="lb-led left"></div>
+            <div class="lb-led left"></div>
+            <div class="lb-led right"></div>
+            <div class="lb-led right"></div>
+            <div class="lb-led right"></div>
+            <div class="lb-led right"></div>
+            <div class="lb-led right"></div>
+            <div class="lb-led right"></div>
+            <div class="lb-led right"></div>
+            <div class="lb-led right"></div>
+          </div>
+          <div class="lb-end right"></div>
+        </div>
+        <div class="lb-brackets">
+          <div class="lb-bracket"></div>
+          <div class="lb-bracket"></div>
+        </div>
+      </div>
+
+      <div class="eyebrow"><span class="pulse-dot"></span> Работим 24 часа, 7 дни в седмицата</div>
+      <h1>Заседнали на пътя? <span>Идваме бързо.</span></h1>
+      <p class="lede">Valcron Assistance обслужва Варна и областта денонощно — репатрак, смяна на гума, старт на акумулатор и още. Едно обаждане и сме на път към теб.</p>
+      <div class="hero-ctas">
+        <a href="tel:+359884987137" class="btn btn-primary">📞 Обади се сега</a>
+        <a href="viber://chat?number=%2B359884987137" target="_blank" rel="noopener" class="btn btn-ghost">💬 Viber</a>
+        <a href="#burza-zayavka" class="btn btn-ghost">📍 Бърз авариен асистент</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>24/7</strong><span>Денонощно</span></div>
+        <div><strong>Варна</strong><span>+ областта</span></div>
+        <div><strong>&lt;30 мин</strong><span>Средно време за пристигане*</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПЪТНА ЛЕНТА РАЗДЕЛИТЕЛ -->
+  <div class="lane-divider"></div>></div>
+
+  <!-- БЪРЗА ЗАЯВКА / АВАРИЕН АСИСТЕНТ -->
+  <section class="quick-request" id="burza-zayavka">
+    <div class="wrap">
+      <div class="qr-head">
+        <span class="kicker">Спешно на пътя</span>
+        <h2>Бърз авариен асистент (30 секунди)</h2>
+        <p>Отговори на няколко бързи въпроса, сподели точната си локация и изпрати детайлите с 1 клик, за да изпратим най-подходящия репатрак и оборудване.</p>
+      </div>
+
+      <div class="qr-card">
+        <div class="qr-progress">
+          <div class="dot" data-dot="1"></div>
+          <div class="dot" data-dot="2"></div>
+          <div class="dot" data-dot="3"></div>
+          <div class="dot" data-dot="4"></div>
+          <div class="dot" data-dot="5"></div>
+          <div class="dot" data-dot="6"></div>
+        </div>
+
+        <!-- Стъпка 1: тип автомобил -->
+        <div class="qr-step active" data-step="1">
+          <div class="qr-step-label">Стъпка 1 от 5</div>
+          <h3>Какво е превозното средство?</h3>
+          <p class="qr-step-hint">Изберете категорията на автомобила</p>
+          <div class="qr-options" data-group="car">
+            <button class="qr-opt" data-value="Лека кола"><span class="qr-opt-icon">🚗</span> Лека кола</button>
+            <button class="qr-opt" data-value="Джип / SUV"><span class="qr-opt-icon">🚙</span> Джип / SUV</button>
+            <button class="qr-opt" data-value="Бус / Ван"><span class="qr-opt-icon">🚐</span> Бус / Ван</button>
+            <button class="qr-opt" data-value="Камион / Техника"><span class="qr-opt-icon">🚛</span> Камион / Техника</button>
+            <button class="qr-opt" data-value="Мотоциклет"><span class="qr-opt-icon">🏍️</span> Мотоциклет</button>
+            <button class="qr-opt" data-value="Друго"><span class="qr-opt-icon">🚜</span> Друго</button>
+          </div>
+          <div class="qr-nav">
+            <span></span>
+            <button class="qr-btn-next" data-next="1">Напред →</button>
+          </div>
+        </div>
+
+        <!-- Стъпка 2: проблем -->
+        <div class="qr-step" data-step="2">
+          <div class="qr-step-label">Стъпка 2 от 5</div>
+          <h3>Какъв е основният проблем?</h3>
+          <p class="qr-step-hint">Изберете водещата причина за повредата</p>
+          <div class="qr-options" data-group="problem">
+            <button class="qr-opt" data-value="Повреда в двигателя / Не пали"><span class="qr-opt-icon">⚙️</span> Повреда в двигателя</button>
+            <button class="qr-opt" data-value="Спукана гума / Без резервна"><span class="qr-opt-icon">🛞</span> Спукана гума</button>
+            <button class="qr-opt" data-value="Паднал / Изтощен акумулатор"><span class="qr-opt-icon">🔋</span> Паднал акумулатор</button>
+            <button class="qr-opt" data-value="ПТП / Катастрофа"><span class="qr-opt-icon">💥</span> ПТП / Катастрофа</button>
+            <button class="qr-opt" data-value="Затънал в кал / сняг / дере"><span class="qr-opt-icon">🌨️</span> Затънал (кал / сняг)</button>
+          </div>
+          <div class="qr-nav">
+            <button class="qr-btn-back" data-back="2">← Назад</button>
+            <button class="qr-btn-next" data-next="2">Напред →</button>
+          </div>
+        </div>
+
+        <!-- Стъпка 3: ходова част и подвижност (Multi-choice) -->
+        <div class="qr-step" data-step="3">
+          <div class="qr-step-label">Стъпка 3 от 5</div>
+          <h3>Състояние на ходовата част и колелата</h3>
+          <p class="qr-step-hint">Можете да изберете няколко опции едновременно</p>
+          <div class="qr-options" data-group="wheels" data-multi="true">
+            <button class="qr-opt" data-value="Колелата се въртят свободно"><span class="qr-opt-icon">🟢</span> Колелата въртят свободно</button>
+            <button class="qr-opt" data-value="Блокирали колела / Счупено окачване"><span class="qr-opt-icon">🛑</span> Блокирали колела / Окачване</button>
+            <button class="qr-opt" data-value="Автоматик блокирал на P / Ел. ръчна"><span class="qr-opt-icon">⚠️</span> Блокирал на P / Ел. ръчна</button>
+            <button class="qr-opt" data-value="Липсва кука за дърпане"><span class="qr-opt-icon">🪝</span> Липсва кука за теглене</button>
+          </div>
+          <div class="qr-nav">
+            <button class="qr-btn-back" data-back="3">← Назад</button>
+            <button class="qr-btn-next" data-next="3">Напред →</button>
+          </div>
+        </div>
+
+        <!-- Стъпка 4: терен и позиция (Multi-choice) -->
+        <div class="qr-step" data-step="4">
+          <div class="qr-step-label">Стъпка 4 от 5</div>
+          <h3>Къде се намира превозното средство?</h3>
+          <p class="qr-step-hint">Можете да изберете няколко опции (напр. в канавка + черен път)</p>
+          <div class="qr-options" data-group="position" data-multi="true">
+            <button class="qr-opt" data-value="На пътя / Асфалт"><span class="qr-opt-icon">🛣️</span> На пътя / Асфалт</button>
+            <button class="qr-opt" data-value="Подземен паркинг / Гараж (< 2.10м)"><span class="qr-opt-icon">🅿️</span> Подземен паркинг (<2.10m)</button>
+            <button class="qr-opt" data-value="В канавка / Дере / Стръмен скат"><span class="qr-opt-icon">🌲</span> Канавка / Дере / Скат</button>
+            <button class="qr-opt" data-value="Тесен черен път / Офроуд"><span class="qr-opt-icon">🚜</span> Черен път / Офроуд</button>
+          </div>
+          <div class="qr-nav">
+            <button class="qr-btn-back" data-back="4">← Назад</button>
+            <button class="qr-btn-next" data-next="4">Напред →</button>
+          </div>
+        </div>
+
+        <!-- Стъпка 5: товар и пътници (Multi-choice) -->
+        <div class="qr-step" data-step="5">
+          <div class="qr-step-label">Стъпка 5 от 5</div>
+          <h3>Пътници и товар в автомобила:</h3>
+          <p class="qr-step-hint">Можете да посочите броя пътници и дали има товар</p>
+          <div class="qr-options" data-group="passengers" data-multi="true">
+            <button class="qr-opt" data-value="Само шофьорът"><span class="qr-opt-icon">👤</span> 1 човек (само шофьор)</button>
+            <button class="qr-opt" data-value="2-4 пътници"><span class="qr-opt-icon">👥</span> 2 до 4 пътници</button>
+            <button class="qr-opt" data-value="5+ пътници (нужен допълнителен транспорт)"><span class="qr-opt-icon">🚐</span> 5+ пътници</button>
+            <button class="qr-opt" data-value="Натоварен с тежък товар / Стока"><span class="qr-opt-icon">📦</span> Автомобилът е с товар / стока</button>
+          </div>
+          <div class="qr-nav">
+            <button class="qr-btn-back" data-back="5">← Назад</button>
+            <button class="qr-btn-next" data-next="5">Напред →</button>
+          </div>
+        </div>
+
+        <!-- Стъпка 6: локация + изпращане -->
+        <div class="qr-step" data-step="6">
+          <div class="qr-step-label">Последна стъпка</div>
+          <h3>Сподели локацията и изпрати</h3>
+
+          <div class="qr-location-box">
+            <button class="btn btn-primary" id="qrLocationBtn" type="button">📍 Изпрати моето местоположение</button>
+            <div class="qr-location-status" id="qrLocationStatus"></div>
+          </div>
+          <!-- НАПОМНЯНЕ ЗА СНИМКА / ВИДЕО -->
+            <div class="qr-photo-tip">   
+                  <div class="tip-text">
+                    <strong>📷 Снимка на ситуацията:</strong>
+                      Прикачете 1–2 снимки на щетата директно в чата на Viber / WhatsApp след отварянето му.
+                   </div>
+            </div>
+
+          <div class="qr-preview" id="qrPreview"></div>
+
+          <div class="qr-send-grid">
+            <a class="qr-send-btn" id="qrWhatsapp" href="#" target="_blank" rel="noopener">
+              <span class="ic">💬</span> WhatsApp
+            </a>
+            <a class="qr-send-btn" id="qrViber" href="#">
+              <span class="ic">📲</span> Viber
+            </a>
+            <a class="qr-send-btn" id="qrSms" href="#">
+              <span class="ic">✉️</span> SMS
+            </a>
+            <button class="qr-send-btn" id="qrCopy" type="button">
+              <span class="ic">📋</span> Копирай
+            </button>
+          </div>
+          <div class="qr-copy-note" id="qrCopyNote">За Viber съобщението се копира автоматично — само го постави (Ctrl+V / Paste) в чата.</div>
+
+          <button class="qr-restart" id="qrRestart" type="button">Започни отначало</button>
+
+          <div class="qr-nav" style="margin-top:10px;">
+            <button class="qr-btn-back" data-back="6">← Назад</button>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ПЪТНА ЛЕНТА РАЗДЕЛИТЕЛ СЛЕД АВАРИЙНИЯ АСИСТЕНТ -->
+<div class="lane-divider"></div>
+
+<!-- ==================== СТАТИСТИКА ==================== -->
+<section class="section stats">
+  <div class="wrap stats-grid">
+    <div class="stats-photo">
+      <img src="logo.png" alt="Valcron Assistance — репатрак" style="object-fit:contain; background:var(--asphalt-light); padding:40px;">
+    </div>
+    <div>
+      <h2>Години опит, доволни клиенти, надеждна помощ</h2>
+      <div class="stats-list">
+        <div>
+          <div class="stat-num"><span class="counter" data-target="2">0</span></div>
+          <div class="stat-label">Години опит</div>
+        </div>
+        <div>
+          <div class="stat-num"><span class="counter" data-target="2000" data-suffix="+">0</span></div>
+          <div class="stat-label">Извършени услуги</div>
+        </div>
+        <div>
+          <div class="stat-num"><span class="counter" data-target="1200" data-suffix="+">0</span></div>
+          <div class="stat-label">Доволни клиенти</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== УСЛУГИ ==================== -->
+<section class="section" id="uslugi">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Какво правим</span>
+      <h2>Пълен обхват пътна помощ</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🚛</div>
+        <h3>Пътна помощ</h3>
+        <p>Бърза реакция при повреда на пътя — диагностика на място и решение веднага, когато е възможно.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚚</div>
+        <h3>Репатрак</h3>
+        <p>Транспорт на автомобил до сервиз, адрес или гараж — внимателно товарене и превоз.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛞</div>
+        <h3>Смяна на гума</h3>
+        <p>Спукана или повредена гума? Сменяме на място с резервна или помагаме за най-близкия сервиз.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔋</div>
+        <h3>Старт на акумулатор</h3>
+        <p>Изтощен акумулатор? Стартираме колата на място за минути.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⛽</div>
+        <h3>Доставка на гориво</h3>
+        <p>Свършило гориво насред пътя — докарваме достатъчно, за да стигнеш до най-близката бензиностанция.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌨️</div>
+        <h3>Изтегляне от кал / сняг</h3>
+        <p>Затънал в кал, сняг или канавка — изтегляме безопасно с подходящо оборудване.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚙</div>
+        <h3>Извозване на стари или изоставени автомобили</h3>
+        <p>Транспорт на излезли от употреба или изоставени автомобили до площадки за рециклиране или друго избрано от вас място.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== КАК РАБОТИМ ==================== -->
+<section class="section" style="background:var(--white);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Процесът</span>
+      <h2>Три стъпки до помощ</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Обаждаш се</h3>
+        <p>Позвъни или пиши във Viber/WhatsApp и опиши накратко ситуацията и локацията си.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Тръгваме към теб</h3>
+        <p>Екипът ни поема веднага — по всяко време на денонощието, 365 дни в годината.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Решаваме на място</h3>
+        <p>Обслужваме на място или превозваме автомобила до избран от теб адрес или сервиз.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ЗОНА НА ПОКРИТИЕ ==================== -->
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="coverage">
+      <div class="coverage-text">
+        <h2>Обслужваме Варна и цялата област</h2>
+        <p>Независимо дали си в центъра на града, по крайбрежието или в по-отдалечено населено място в областта — идваме при теб.</p>
+        <div class="coverage-tags">
+          <span>Варна</span>
+          <span>Аксаково</span>
+          <span>Белослав</span>
+          <span>Девня</span>
+          <span>Долен Чифлик</span>
+          <span>Провадия</span>
+          <span>Вълчи дол</span>
+          <span>Суворово</span>
+          <span>Близнаци</span>
+          <span>Камчия</span>
+          <span>Албена</span>
+          <span>Приселци</span>
+          <span>Обзор</span>
+          <span>Старо Оряхово</span>
+        </div>
+      </div>
+      <div class="coverage-badge">
+        <strong>24/7</strong>
+        <span>ДЕНОНОЩНО ПОКРИТИЕ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hazard-strip"></div>
+
+<!-- ==================== КОНТАКТИ ==================== -->
+<section class="section contact" id="kontakti">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Нужна ти е помощ на пътя?</h2>
+      <p class="lede">Свържи се с нас по удобния за теб начин — работим денонощно, всеки ден от годината.</p>
+      <div class="contact-methods">
+        <a href="tel:+359884987137" class="contact-method">
+          <div class="icon">📞</div>
+          <div>
+            <strong>0884 987 137</strong>
+            <span>Обаждане — 24/7</span>
+          </div>
+        </a>
+        <a href="viber://chat?number=%2B359884987137" target="_blank" rel="noopener" class="contact-method">
+          <div class="icon">💬</div>
+          <div>
+            <strong>Viber</strong>
+            <span>0884 987 137</span>
+          </div>
+        </a>
+        <a href="mailto:valcrongroup@gmail.com" class="contact-method">
+          <div class="icon">✉️</div>
+          <div>
+            <strong>valcrongroup@gmail.com</strong>
+            <span>За запитвания без бързане</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h3>Спешно на пътя?</h3>
+      <p>Обади се веднага — не чакай формуляр. Ще ти изпратим екип по най-бързия начин.</p>
+      <span class="big-number">📞 0884 987 137</span>
+      <a href="tel:+359884987137" class="btn btn-dark" style="width:100%; justify-content:center;">Обади се сега</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ФОРМА ЗА КОНТАКТ ==================== -->
+<section class="section" style="background:var(--white);">
+  <div class="wrap" style="max-width:640px;">
+    <div class="section-head" style="margin:0 auto 40px; text-align:center; max-width:100%;">
+      <span class="kicker" style="display:block;">Пиши ни</span>
+      <h2>Изпрати запитване</h2>
+    </div>
+    <form action="https://formspree.io/f/mvkpdqng" method="POST" style="background:var(--cream); border-radius:20px; padding:36px;">
+      <div class="form-field">
+        <label for="f-name">Име</label>
+        <input type="text" id="f-name" name="name" placeholder="Твоето име" required>
+      </div>
+      <div class="form-field">
+        <label for="f-phone">Телефон за връзка</label>
+        <input type="tel" id="f-phone" name="phone" placeholder="08XX XXX XXX" required>
+      </div>
+      <div class="form-field">
+        <label for="f-message">Съобщение</label>
+        <textarea id="f-message" name="message" placeholder="Опиши накратко проблема и локацията си"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Изпрати съобщение</button>
+      <p class="form-note">За спешни случаи винаги е по-бързо директно обаждане на 0884 987 137.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="wrap footer-inner">
+    <span>© <span id="year"></span> Valcron Assistance. Всички права запазени.</span>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/profile.php?id=61593533576656" target="_blank" rel="noopener" class="social-link" aria-label="Facebook" style="color:rgba(255,255,255,.6);">f</a>
+      <a href="https://www.instagram.com/valcronassistance/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram" style="color:rgba(255,255,255,.6);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+    </div>
+    <span>Варна и областта · 24/7</span>
+  </div>
+</footer>
+
+<a href="tel:+359884987137" class="float-call" aria-label="Обади се">📞</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---- Анимирани цифри ----
+  const counters = document.querySelectorAll('.counter');
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1600;
+    const start = performance.now();
+    function tick(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if(progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  };
+  if(counters.length){
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => observer.observe(c));
+  }
+
+  // ---- Бърза заявка (Усъвършенстван wizard с multi-selection) ----
+  (function(){
+    const PHONE = "359884987137";
+    const card = document.querySelector('.qr-card');
+    if(!card) return;
+
+    const state = { 
+      car: null, 
+      problem: null, 
+      wheels: [], 
+      position: [], 
+      passengers: [], 
+      mapsLink: null 
+    };
+    let currentStep = 1;
+
+    const steps = card.querySelectorAll('.qr-step');
+    const dots = card.querySelectorAll('.qr-progress .dot');
+
+    function showStep(n){
+      steps.forEach(s => s.classList.toggle('active', Number(s.dataset.step) === n));
+      dots.forEach(d => d.classList.toggle('done', Number(d.dataset.dot) <= n));
+      currentStep = n;
+      if(n === 6) updatePreview();
+    }
+
+    card.querySelectorAll('.qr-options').forEach(group => {
+      const key = group.dataset.group;
+      const isMulti = group.dataset.multi === "true";
+
+      group.querySelectorAll('.qr-opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const nextBtn = group.closest('.qr-step').querySelector('.qr-btn-next');
+          const val = btn.dataset.value;
+
+          if(!isMulti){
+            group.querySelectorAll('.qr-opt').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            state[key] = val;
+            if(nextBtn) nextBtn.classList.add('enabled');
+          } else {
+            btn.classList.toggle('selected');
+            if(btn.classList.contains('selected')){
+              if(!state[key].includes(val)) state[key].push(val);
+            } else {
+              state[key] = state[key].filter(item => item !== val);
+            }
+            if(nextBtn){
+              if(state[key].length > 0) nextBtn.classList.add('enabled');
+              else nextBtn.classList.remove('enabled');
+            }
+          }
+        });
+      });
+    });
+
+    card.querySelectorAll('[data-next]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if(!btn.classList.contains('enabled')) return;
+        showStep(Number(btn.dataset.next) + 1);
+      });
+    });
+    card.querySelectorAll('[data-back]').forEach(btn => {
+      btn.addEventListener('click', () => showStep(Number(btn.dataset.back) - 1));
+    });
+
+    document.getElementById('qrRestart').addEventListener('click', () => {
+      state.car = null;
+      state.problem = null;
+      state.wheels = [];
+      state.position = [];
+      state.passengers = [];
+      state.mapsLink = null;
+      card.querySelectorAll('.qr-opt').forEach(b => b.classList.remove('selected'));
+      card.querySelectorAll('.qr-btn-next').forEach(b => b.classList.remove('enabled'));
+      document.getElementById('qrLocationStatus').textContent = '';
+      document.getElementById('qrLocationStatus').className = 'qr-location-status';
+      showStep(1);
+    });
+
+    function buildMessage(){
+      const wheelsText = state.wheels.length ? state.wheels.join(', ') : null;
+      const positionText = state.position.length ? state.position.join(', ') : null;
+      const passengersText = state.passengers.length ? state.passengers.join(', ') : null;
+
+      const lines = [
+        '🚨 *ЗАЯВКА ЗА ПЪТНА ПОМОЩ*',
+        state.car ? ('• Превозно средство: ' + state.car) : null,
+        state.problem ? ('• Проблем: ' + state.problem) : null,
+        wheelsText ? ('• Ходова част/колела: ' + wheelsText) : null,
+        positionText ? ('• Позиция/достъп: ' + positionText) : null,
+        passengersText ? ('• Пътници/товар: ' + passengersText) : null,
+        state.mapsLink ? ('• Локация: ' + state.mapsLink) : '• Локация: ще опиша допълнително',
+      ].filter(Boolean);
+      return lines.join('\n');
+    }
+
+    function updatePreview(){
+      const msg = buildMessage();
+      document.getElementById('qrPreview').textContent = msg;
+      const encoded = encodeURIComponent(msg);
+      document.getElementById('qrWhatsapp').href = 'https://wa.me/' + PHONE + '?text=' + encoded;
+      document.getElementById('qrSms').href = 'sms:+' + PHONE + '?body=' + encoded;
+      document.getElementById('qrViber').href = 'viber://chat?number=%2B' + PHONE;
+    }
+
+    document.getElementById('qrViber').addEventListener('click', () => {
+      const msg = buildMessage();
+      if(navigator.clipboard){ navigator.clipboard.writeText(msg).catch(()=>{}); }
+    });
+
+    document.getElementById('qrCopy').addEventListener('click', () => {
+      const msg = buildMessage();
+      const note = document.getElementById('qrCopyNote');
+      const restore = () => {
+        note.textContent = 'За Viber съобщението се копира автоматично — само го постави (Ctrl+V / Paste) в чата.';
+      };
+      const showCopied = () => {
+        note.textContent = '✓ Съобщението е копирано в клипборда.';
+        setTimeout(restore, 2500);
+      };
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(msg).then(showCopied).catch(() => {
+          note.textContent = 'Не успяхме да копираме автоматично — маркирай текста по-горе ръчно.';
+          setTimeout(restore, 3000);
+        });
+      } else {
+        note.textContent = 'Копирането не се поддържа в този браузър — маркирай текста по-горе ръчно.';
+        setTimeout(restore, 3000);
+      }
+    });
+
+    document.getElementById('qrLocationBtn').addEventListener('click', () => {
+      const status = document.getElementById('qrLocationStatus');
+      const isSecure = window.isSecureContext || location.hostname === 'localhost';
+      if(!isSecure){
+        status.textContent = 'Локацията работи само след качване на сайта на хостинг с https:// — не и при локално отворен файл.';
+        status.className = 'qr-location-status err';
+        return;
+      }
+
+      if(!navigator.geolocation){
+        status.textContent = 'Браузърът не поддържа споделяне на локация. Опиши мястото в съобщението.';
+        status.className = 'qr-location-status err';
+        return;
+      }
+      status.textContent = 'Търсене на локация…';
+      status.className = 'qr-location-status';
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude, longitude } = pos.coords;
+          state.mapsLink = 'https://www.google.com/maps?q=' + latitude + ',' + longitude;
+          status.textContent = '✓ Локацията е добавена към съобщението';
+          status.className = 'qr-location-status ok';
+          updatePreview();
+        },
+        (err) => {
+          let msg = 'Не успяхме да вземем локацията автоматично — опиши мястото в съобщението.';
+          if(err.code === err.PERMISSION_DENIED){
+            msg = 'Достъпът до локация е отказан. Разреши го от настройките на браузъра за този сайт и опитай пак.';
+          } else if(err.code === err.POSITION_UNAVAILABLE){
+            msg = 'Не открихме позицията. Провери дали услугите за локация (GPS) са включени на телефона.';
+          } else if(err.code === err.TIMEOUT){
+            msg = 'Отне твърде дълго време да намерим локацията. Опитай пак на открито място.';
+          }
+          status.textContent = msg;
+          status.className = 'qr-location-status err';
+        },
+        { enableHighAccuracy:true, timeout:10000 }
+      );
+    });
+  })();
+</script>
+
+</body>
+</html>
